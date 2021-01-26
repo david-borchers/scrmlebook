@@ -1,0 +1,14 @@
+\documentclass{article}
+\usepackage{amsmath}
+
+%\VignetteIndexEntry{Covariates with masks}
+%\VignetteEngine{knitr::knitr}
+
+\title{Manipulating covariates with masks}
+\author{David Borchers}
+\begin{document}
+\maketitle
+
+This is currently just a placeholder.
+
+\end{document}

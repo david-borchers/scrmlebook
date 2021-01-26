@@ -1,0 +1,25 @@
+Package: scrmlebook
+Type: Package
+Title: Utility functions and data for the book Spatial Capture-Recapture by
+    Maximum Likelihood, with R
+Version: 1.0
+Date: 2016-10-09
+Author: David Borchers et al.
+Maintainer: David Borchers <dlb@st-andrews.ac.uk>
+Description: Utility functions and data for the book Spatial Capture-Recapture
+    by Maximum Likelihood, with R.
+License: GPL (>= 2)
+Imports:
+    fields,
+    gdistance,
+    igraph,
+    methods,
+    Matrix,
+    raster,
+    secr,
+    sp
+Suggests:
+    knitr,
+    testthat
+VignetteBuilder: knitr
+RoxygenNote: 6.1.1
