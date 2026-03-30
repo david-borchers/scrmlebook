@@ -4,38 +4,33 @@
 \alias{plot.er.fit}
 \title{Encounter rate fit plot}
 \usage{
-\method{plot}{er.fit}(scrfit, dmax, binwidth, lwd = 2, xlab = "x",
-  ylab = "y", hcol = "red", hlineonly = FALSE, houtline = FALSE,
-  hfill = TRUE)
+\method{plot}{er.fit}(
+  scrfit,
+  dmax,
+  binwidth,
+  lwd = 2,
+  xlab = "x",
+  ylab = "y",
+  hcol = "red",
+  hlineonly = FALSE,
+  houtline = FALSE,
+  hfill = TRUE
+)
 
-\method{plot}{er.fit}(scrfit, dmax, binwidth, lwd = 2, xlab = "x",
-  ylab = "y", hcol = "red", hlineonly = FALSE, houtline = FALSE,
-  hfill = TRUE)
+\method{plot}{er.fit}(
+  scrfit,
+  dmax,
+  binwidth,
+  lwd = 2,
+  xlab = "x",
+  ylab = "y",
+  hcol = "red",
+  hlineonly = FALSE,
+  houtline = FALSE,
+  hfill = TRUE
+)
 }
 \arguments{
-\item{scrfit}{Object of class  '\code{secr}' from package \code{secr}. The function only 
-works with traps of class '\code{count}'.}
-
-\item{dmax}{Maximum distance to plot.}
-
-\item{binwidth}{width of each distance interval to plot.}
-
-\item{lwd}{Line width for encounter rate function.}
-
-\item{xlab}{Label for x-axis.}
-
-\item{ylab}{Label for y-axis.}
-
-\item{hcol}{Colour of histogram.}
-
-\item{hlineonly}{If TRUE, uses \code{\link{lines}} to draw histogram lines on current plot; 
-else uses \code{\link{plot}} to draw lines on new plot.}
-
-\item{houtline}{If TRUE, draws only the outline (profile) of the histogram; else draws each 
-complete bar.}
-
-\item{hfill}{TRUE, fills bards with \code{hcol}, else leaves them empty.}
-
 \item{scrfit}{Object of class  '\code{secr}' from package \code{secr}. The function only 
 works with traps of class '\code{count}'.}
 

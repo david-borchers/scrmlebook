@@ -4,9 +4,17 @@
 \alias{LL.captimes}
 \title{Calculate the log likelihood value for captures.}
 \usage{
-LL.captimes(x_, dists_ = NULL, log.lambda.d_ = NULL,
-  log.lambda.b.d_ = NULL, lambda0_, lambda0.b_, const.haz_ = F,
-  gam.obj_, spline.coeff_)
+LL.captimes(
+  x_,
+  dists_ = NULL,
+  log.lambda.d_ = NULL,
+  log.lambda.b.d_ = NULL,
+  lambda0_,
+  lambda0.b_,
+  const.haz_ = F,
+  gam.obj_,
+  spline.coeff_
+)
 }
 \arguments{
 \item{x_}{The function is used with apply() on each individual's capture history. The first argument x_ is a

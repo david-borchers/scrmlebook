@@ -4,8 +4,7 @@
 \alias{shadedCI}
 \title{Draws a shaded confidence region for a line}
 \usage{
-shadedCI(xyci, col = adjustcolor("gray", alpha.f = 0.4), border = NA,
-  ...)
+shadedCI(xyci, col = adjustcolor("gray", alpha.f = 0.4), border = NA, ...)
 }
 \arguments{
 \item{xyci}{a data frame or matrix with first element being x-coordinates, 

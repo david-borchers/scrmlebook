@@ -4,8 +4,16 @@
 \alias{prob.detect}
 \title{Calculates the probability of detection from a chosen activity centre, for a given time point and for a given duration.}
 \usage{
-prob.detect(pixel_, mask.obj_, beta1_, duration_, time_, lambda0_,
-  spline.coeff_, sigma_ = NULL)
+prob.detect(
+  pixel_,
+  mask.obj_,
+  beta1_,
+  duration_,
+  time_,
+  lambda0_,
+  spline.coeff_,
+  sigma_ = NULL
+)
 }
 \arguments{
 \item{pixel_}{The two dimensional coordinate that corresponds to the pixel of interest.}

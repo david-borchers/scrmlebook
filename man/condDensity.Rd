@@ -4,8 +4,15 @@
 \alias{condDensity}
 \title{Conditional value of fiited density smooth}
 \usage{
-condDensity(fit, covariate, otherlevels = NULL, mask = NULL,
-  se = TRUE, cl = TRUE, nx = 200)
+condDensity(
+  fit,
+  covariate,
+  otherlevels = NULL,
+  mask = NULL,
+  se = TRUE,
+  cl = TRUE,
+  nx = 200
+)
 }
 \arguments{
 \item{fit}{An object of class \code{secr}.}
@@ -17,13 +24,11 @@ condDensity(fit, covariate, otherlevels = NULL, mask = NULL,
 
 \item{mask}{An object of class \code{mask}, which contains the covariates 'covariate' and those for 'otherlevels'.}
 
-\item{se}{TRUE if you want standard errors of density calculated and returned.}
+\item{se}{TRUE if you want the upper 95\% bound of density calculated and returned.}
 
 \item{nx}{Number of values of 'covariate' to use.}
 
 \item{lcl}{TRUE if you want the lower 95\% bound of density calculated and returned.}
-
-\item{se}{TRUE if you want the upper 95\% bound of density calculated and returned.}
 }
 \value{
 A list comprising:

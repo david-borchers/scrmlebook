@@ -4,9 +4,20 @@
 \alias{lcpathplot}
 \title{Least-cost path plot}
 \usage{
-lcpathplot(mask, transitionFunction, type = "noneuc", n = 512,
-  background = "d2.river", linecol = "white", directions = 16,
-  symm = TRUE, directed = FALSE, lwd = 1, ...)
+lcpathplot(
+  mask,
+  transitionFunction,
+  type = "noneuc",
+  n = 512,
+  froms = NULL,
+  tos = NULL,
+  linecol = "white",
+  directions = 16,
+  symm = TRUE,
+  directed = FALSE,
+  lwd = 1,
+  ...
+)
 }
 \arguments{
 \item{mask}{A mask with covariate `noneuc` (obtained using \code{predictDsurface})}

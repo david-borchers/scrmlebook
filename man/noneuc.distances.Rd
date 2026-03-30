@@ -4,8 +4,13 @@
 \alias{noneuc.distances}
 \title{Calcluates the least cost distances.}
 \usage{
-noneuc.distances(traps.obj_, mask.obj_, transitionFn_ = 1,
-  directions_ = 16, conduct.par_ = 0)
+noneuc.distances(
+  traps.obj_,
+  mask.obj_,
+  transitionFn_ = 1,
+  directions_ = 16,
+  conduct.par_ = 0
+)
 }
 \arguments{
 \item{traps.obj_}{A traps object that is used to get least cost distances from every trap to every mask cell.}

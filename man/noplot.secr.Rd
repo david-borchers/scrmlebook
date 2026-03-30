@@ -4,8 +4,14 @@
 \alias{noplot.secr}
 \title{Calculates detection function values}
 \usage{
-noplot.secr(x, newdata = NULL, rgr = FALSE, limits = FALSE,
-  alpha = 0.05, xval = 0:200)
+noplot.secr(
+  x,
+  newdata = NULL,
+  rgr = FALSE,
+  limits = FALSE,
+  alpha = 0.05,
+  xval = 0:200
+)
 }
 \arguments{
 \item{x}{an object of class \code{secr}.}

@@ -4,8 +4,17 @@
 \alias{erdetfun}
 \title{Calculates encounter or detection function values and CIs}
 \usage{
-erdetfun(x, newdata = NULL, dists = 0:200, rgr = FALSE, ci = FALSE,
-  ci.method = "secr", alpha = 0.05, what = "p", B = 999)
+erdetfun(
+  x,
+  newdata = NULL,
+  dists = 0:200,
+  rgr = FALSE,
+  ci = FALSE,
+  ci.method = "secr",
+  alpha = 0.05,
+  what = "p",
+  B = 999
+)
 }
 \arguments{
 \item{x}{an object of class \code{secr}.}

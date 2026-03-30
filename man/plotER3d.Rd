@@ -2,13 +2,56 @@
 % Please edit documentation in R/scrplotting.r
 \name{plotER3d}
 \alias{plotER3d}
-\title{Plots encounter rate in 3D}
+\title{Plots 3D encounter rate on mesh}
 \usage{
-plotER3d(capthist, mask = NULL, occasions = 1, add.points = TRUE,
-  add.text = FALSE, add.maskedge = FALSE, add.mask = TRUE,
-  add.traps = TRUE, maskcov = NULL, maskcol = parula, ncols = 40,
-  ...)
+plotER3d(
+  capthist,
+  mask = NULL,
+  occasions = 1,
+  add.points = TRUE,
+  add.text = FALSE,
+  add.maskedge = FALSE,
+  add.mask = TRUE,
+  add.traps = TRUE,
+  maskcov = NULL,
+  maskcol = parula,
+  ncols = 40,
+  pointcolr = NULL,
+  ptsize = 5,
+  ...
+)
+}
+\arguments{
+\item{capthist}{is object of class "capthist".}
+
+\item{mask}{If not NULL, is object of class "mask".}
+
+\item{occasions}{Scalar or vector of occasions to plot (encounters and effort
+will be combined over these occasions).}
+
+\item{add.points}{TRUE if you want points on top of the "pins" showing encounter
+rate.}
+
+\item{add.text}{TRUE if you want the ecounter rate printed on top of the "pins".}
+
+\item{add.maskedge}{TRUE if you want the mask edge to be drawn (sometimes can
+make mask look better, often not).}
+
+\item{add.mask}{TRUE if you want the mask plotted on the base.}
+
+\item{add.traps}{TRUE if you want the traps plotted as points on the base.}
+
+\item{maskcov}{NULL, or name of the mask covariate you want to shade the mask with.}
+
+\item{maskcol}{Name of the colour scheme to use in shading the mask.}
+
+\item{ncols}{Number of colours to use in the mask colour scheme}
+
+\item{pointcolr}{Name of color scheme to use in plotting points on "pins" 
+(NULL gives you parula color scheme).}
+
+\item{ptsize}{Size of points on "pins".}
 }
 \description{
-Plots encounter rate in 3D
+Plots 3D encounter rate on mesh
 }

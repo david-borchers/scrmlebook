@@ -4,13 +4,30 @@
 \alias{CT.SCR}
 \title{Constructs the Continuous-Time (CT) SCR likelihood.}
 \usage{
-CT.SCR(beta_, data_, trap.objs_, mask.objs_, dists_ = NULL,
-  D.type_ = c("Cons"), D.mod_ = c(1), lambda0.mod_ = c(1),
-  sigma.mod_ = NULL, lambda0.b_ = c("n"), haz.mod_ = c(1),
-  haz.type_ = "IndL", haz.k_ = c(6), conduct.mod_ = NULL,
-  fixed.b0_ = 0, usage_ = NULL, endpoint_, setup.hour_ = 0,
-  occ.interval_ = 24, cycle.vec_ = seq(0, 24, by = 1),
-  mesh.size_ = 100, trace_ = FALSE)
+CT.SCR(
+  beta_,
+  data_,
+  trap.objs_,
+  mask.objs_,
+  dists_ = NULL,
+  D.type_ = c("Cons"),
+  D.mod_ = c(1),
+  lambda0.mod_ = c(1),
+  sigma.mod_ = NULL,
+  lambda0.b_ = c("n"),
+  haz.mod_ = c(1),
+  haz.type_ = "IndL",
+  haz.k_ = c(6),
+  conduct.mod_ = NULL,
+  fixed.b0_ = 0,
+  usage_ = NULL,
+  endpoint_,
+  setup.hour_ = 0,
+  occ.interval_ = 24,
+  cycle.vec_ = seq(0, 24, by = 1),
+  mesh.size_ = 100,
+  trace_ = FALSE
+)
 }
 \arguments{
 \item{beta_}{A vector of parameter values. These contain the starting values for the optimisation when passed to nlm.}

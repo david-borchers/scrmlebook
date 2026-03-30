@@ -4,8 +4,17 @@
 \alias{histline}
 \title{Draws histogram.}
 \usage{
-histline(height, breaks, lineonly = FALSE, outline = FALSE,
-  fill = FALSE, ylim = range(height), xlab = "x", ylab = "y", ...)
+histline(
+  height,
+  breaks,
+  lineonly = FALSE,
+  outline = FALSE,
+  fill = FALSE,
+  ylim = range(height),
+  xlab = "x",
+  ylab = "y",
+  ...
+)
 }
 \arguments{
 \item{height}{Height of histogram bars.}

@@ -4,9 +4,18 @@
 \alias{Calc.ER.Variance}
 \title{Calculate the variance for the time-dependent expected encounter rate.}
 \usage{
-Calc.ER.Variance(par.ests, num.spline.pars, vcov.mat, type = "lambda.t",
-  method = "delta", Breps = 1000, alpha = 0.05, resolution = 100,
-  dist = NULL, pred.mesh = NULL)
+Calc.ER.Variance(
+  par.ests,
+  num.spline.pars,
+  vcov.mat,
+  type = "lambda.t",
+  method = "delta",
+  Breps = 1000,
+  alpha = 0.05,
+  resolution = 100,
+  dist = NULL,
+  pred.mesh = NULL
+)
 }
 \arguments{
 \item{par.ests}{The estimated parameters from the chosen model (excluding Density). The order of the parameters (on the link scale)

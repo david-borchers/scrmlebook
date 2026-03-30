@@ -1,4 +1,4 @@
-#' @title Calculate detection function or encounter rate parameters
+#' @title Calculate detection or encounter function parameters
 #'
 #' @description
 #'  Calculates detection function or expected encounter rate at a range of
@@ -7,18 +7,20 @@
 #'  \link{secr::detectfnplot}, modified so as not to do the plotting and always 
 #'  return the function values.
 #'  
+#' @param from A data frame or matrix with two columns, being the x- and y-coordinates of a set of points
+#' @param to A data frame or matrix with two columns, being the x- and y-coordinates of a set of points
+#'
 #' @param detectfn integer code or character string for shape of detection 
-#' function 0 = halfnormal etc. – see \link{secr::detectfn}. 
+#' function: 0 for halfnormal etc. (see \link{secr::detectfn}). 
+#' @param dists distances at which to calculate the function.
 #' @param pars list, vector or matrix of parameter values.
 #' @param pars.vcv variance-covariance matrix of pars
-#' @param details list of ancillary parameters - see \link{secr::detectfn} for 
-#' details
+#' @param details list of ancillary parameters (see \link{secr::detectfn})
 #' @param rgr logical; if TRUE a scaled curve r.g(r) is plotted instead of g(r)
 #' @param hazard logical; if TRUE the hazard of detection (the expected encounter
 #' function) is plotted instead of the probability.
-#' @param dists distances at which to calculate the function.
 #' 
-#' @export plam
+#' @export 
 #' 
 plam = function(detectfn, pars, dists, pars.vcv=NULL, details=NULL, rgr=FALSE, hazard=FALSE) {
   gline <- function(pars) {
@@ -169,13 +171,13 @@ streplace = function(string,from,to){
 #' @param criterion Character variable being 'AIC' or 'AICc'. 
 #' @param Dscale Numeric scaling factor for density (which is multiplied by this factor).
 #' 
-#' @export makeDtable
+#' @export 
 makeDtable = function(object, ..., criterion=c("AICc","AIC"),Dscale=1) {
   if(class(object)!="secr" & class(object)!="secrlist") stop("object must be of class `secr` or `secrlist`")
-  allargs <- list(...)
+  allargs <- secrlist(object, ...)
   modelnames <- (c(as.character(match.call(expand.dots = FALSE)$object), 
                    as.character(match.call(expand.dots = FALSE)$...)))
-  allargs <- secrlist(object, allargs)
+  #allargs <- secrlist(object, allargs)
   names(allargs) <- modelnames
   nests = length(allargs)
   aicvals = nDpars = rep(NA,nests)
@@ -217,6 +219,87 @@ makeDtable = function(object, ..., criterion=c("AICc","AIC"),Dscale=1) {
   
   return(Dhat)
 }
+
+
+
+
+#' @title Summarises density estimates from secr objects
+#'
+#' @description
+#'  Makes a data frame summarising density estimates, ordered by AIC or AICc.
+#'  
+#' @details 
+#' Lists the following in each column of the data frame, for each model, with models arranged in increasing order of AIC or AICc
+#' (whichever was specified in the call). Density estimate, SE, lower- and upper 95\% confidence intervals are multiplied by 
+#' argument \code{Dscale}
+#' \itemize{
+#'  \item{Dhat:}{ Density estimate.}
+#'  \item{se:}{ Standard error of density estimate.}
+#'  \item{lcl:}{ Lower 95\% confidence bound for density.}
+#'  \item{ucl:}{ Upper 95\% confidence bound for density.}
+#'  \item{cv:}{ Coefficient of variation of density estimate.}
+#'  \item{npar:}{ Number of parameters in the model.}
+#'  \item{logLik:}{ Log-Likelihood}
+#'  \item{AIC:}{ AIC or AICc (whichever was specified in the call).}
+#'  \item{dAIC:}{ Delta AIC or Delta AICc (whichever was specified in the call).}
+#'  \item{AICwt:}{ AIC weight or AICc weight (whichever was specified in the call).}
+#'  }
+#'  Requires function \code{AIC} from package \code{secr}.
+#'  
+#' @param allargs Object of class '\code{secrlist}' or '\code{secr}' from package \code{secr}.
+#' @param ... Other object of class '\code{secrlist}' or '\code{secr}'.
+#' @param criterion Character variable being 'AIC' or 'AICc'. 
+#' @param Dscale Numeric scaling factor for density (which is multiplied by this factor).
+#' 
+#' @export 
+makeDtable = function(object, ..., criterion=c("AICc","AIC"),Dscale=1) {
+  if(class(object)!="secr" & class(object)!="secrlist") stop("object must be of class `secr` or `secrlist`")
+  allargs <- secrlist(object, ...)
+  modelnames <- (c(as.character(match.call(expand.dots = FALSE)$object), 
+                   as.character(match.call(expand.dots = FALSE)$...)))
+  #allargs <- secrlist(object, allargs)
+  names(allargs) <- modelnames
+  nests = length(allargs)
+  aicvals = nDpars = rep(NA,nests)
+  NAs = rep(NA,nests)
+  Dhat = data.frame(Dhat=NAs, se=NAs, lcl=NAs, ucl=NAs, cv=NAs, npar=NAs, logLik=NAs, AIC=NAs, dAIC=NAs, AICwt=NAs, model=NAs,
+                    name=NAs)
+  for(i in 1:nests) {
+    if(class(allargs)=="secr") secrobj = allargs else secrobj = allargs[[i]]
+    aicobj = AIC(secrobj,criterion=criterion[1])
+    aicvals[i] = as.numeric(aicobj[which(names(aicobj)==criterion[1])])
+    nDpars[i] = length(which(substr(row.names(coefficients(secrobj)),start=1,stop =1)=="D"))
+  }
+  mod = order(aicvals)
+#  if(class(allargs)=="secr") secrobj = allargs else secrobj = allargs
+#  aics <- AIC(secrobj)
+  aics <- AIC(allargs)
+  for(i in 1:nests) {
+    msum = summary(allargs[[i]]$mask)
+    A = msum$cellarea*msum$nmaskpoints
+    if(nDpars[i]==1) {
+      Dhat[i,1:5] = derived(allargs[[i]])[2,c(1:4,7)]
+    }else {
+      Dhat[i,1:4] = region.N(allargs[[i]])[1,1:4]/A
+      Dhat[i,5] = Dhat[i,2]/Dhat[i,1]
+    }
+  }
+  Dhat[,1:4] = Dhat[,1:4]*Dscale
+  Dhat$cv = Dhat$cv*100 # make a percentage
+#  allaics = AIC(allargs)
+  Dhat$npar = aics$npar
+  Dhat$logLik = aics$logLik
+  Dhat$AIC = aicvals[mod]
+  Dhat$name = modelnames[mod]
+  if(nests>1) {
+    Dhat$dAIC = Dhat$AIC-min(Dhat$AIC)
+    Dhat$AICwt = aics[,8]
+  }
+  Dhat$model = aics$model
+  
+  return(Dhat)
+}
+
 
 
 

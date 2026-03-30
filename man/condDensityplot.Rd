@@ -4,12 +4,28 @@
 \alias{condDensityplot}
 \title{Plot conditional value of fiited density smooth}
 \usage{
-condDensityplot(fit, covariate, otherlevels = NULL, mask = NULL,
-  se = TRUE, cl = TRUE, nx = 200, Dscale = 100^2,
-  xlab = covariate, ylab = expression(hat(D)), main = "",
-  Dlcol = "black", Dlty = 1, Dlwd = 1, CIlcol = "black",
-  CIlty = 2, CIlwd = 1, tkcol = "black", tkcex = 0.75,
-  tkpch = "|")
+condDensityplot(
+  fit,
+  covariate,
+  otherlevels = NULL,
+  mask = NULL,
+  se = TRUE,
+  cl = TRUE,
+  nx = 200,
+  Dscale = 100^2,
+  xlab = covariate,
+  ylab = expression(hat(D)),
+  main = "",
+  Dlcol = "black",
+  Dlty = 1,
+  Dlwd = 1,
+  CIlcol = "black",
+  CIlty = 2,
+  CIlwd = 1,
+  tkcol = "black",
+  tkcex = 0.75,
+  tkpch = "|"
+)
 }
 \arguments{
 \item{fit}{An object of class \code{secr}.}
@@ -21,7 +37,7 @@ condDensityplot(fit, covariate, otherlevels = NULL, mask = NULL,
 
 \item{mask}{An object of class \code{mask}, which contains the covariates 'covariate' and those for 'otherlevels'.}
 
-\item{se}{TRUE if you want standard errors of density calculated and returned.}
+\item{se}{TRUE if you want the upper 95\% bound of density calculated and returned.}
 
 \item{nx}{Number of values of 'covariate' to use.}
 
@@ -30,8 +46,6 @@ condDensityplot(fit, covariate, otherlevels = NULL, mask = NULL,
 \item{xlab}{Label for x-axis. Defaults to the \code{covariate} argument value.}
 
 \item{lcl}{TRUE if you want the lower 95\% bound of density calculated and returned.}
-
-\item{se}{TRUE if you want the upper 95\% bound of density calculated and returned.}
 }
 \value{
 Invisibly returns a list comprising:

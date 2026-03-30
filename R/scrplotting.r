@@ -325,6 +325,23 @@ splotcovariate = function(mask,covariate,...) {
   sp::plot(spdf[cnum[1]],...)
 }
 
+
+#' @title Plots perspective image of mask covariate value
+#' 
+#' @param mask is an object of class \code{mask}
+#' @param covariate is a character variable with the name of one of the covariates in mask (the one to plot)
+#' @param ... other arguments to be passed to \code{persp}
+#' 
+#' @export
+implotcovariate = function(mask, covariate, ...) {
+  cnum=which(names(covariates(mask))==covariate)
+  if(is.null(cnum)) stop(paste("No covariate(s) called",covariate))
+  if(length(cnum)>1) warning("Can only plot one covariate at a time. First covariate being plotted.")
+  dframe=data.frame(x=mask$x, y=mask$y, z=covariates(mask)[[cnum]])
+  Dsurf = prep4image(dframe,plot=FALSE)
+  pmat<-persp(Dsurf, ...)
+}
+
 #' @title Plots image (and optionally contours) of mask covariate value
 #' @param mask is an object of class `mask'
 #' @param covariate is a character variable with the name of one of the covariates in mask (the one to plot)
@@ -560,7 +577,7 @@ condDensityplot = function(fit,covariate,otherlevels=NULL,mask=NULL,se=TRUE,cl=T
 #' @title Plots 3D encounter rate on mesh
 #' @param capthist is object of class "capthist".
 #' @param mask If not NULL, is object of class "mask". 
-#' @param occasions Scalar or vector of occasions to plot (encounters and effot
+#' @param occasions Scalar or vector of occasions to plot (encounters and effort
 #' will be combined over these occasions).
 #' @param add.points TRUE if you want points on top of the "pins" showing encounter
 #' rate.
@@ -573,7 +590,7 @@ condDensityplot = function(fit,covariate,otherlevels=NULL,mask=NULL,se=TRUE,cl=T
 #' @param maskcol Name of the colour scheme to use in shading the mask.
 #' @param ncols Number of colours to use in the mask colour scheme
 #' @param pointcolr Name of color scheme to use in plotting points on "pins" 
-#' (NULL gives you paula color scheme).
+#' (NULL gives you parula color scheme).
 #' @param ptsize Size of points on "pins".
 #' 
 #' @export
@@ -592,11 +609,20 @@ plotER3d = function(capthist, mask=NULL, occasions=1, add.points=TRUE,
   occasions = as.integer(occasions)
   noccasions = length(occasions)
   
+  
   dets = traps(capthist)
+  attr(dets,"markocc") = NULL # don't distinguish between sighting and marking
   ntraps = dim(dets)[1]
   asp= c(1,diff(range(dets$y))/diff(range(dets$x)),1)
-  if(is.null(usage(dets))) effort = rep(1,ntraps)
-  else effort = apply(usage(dets)[,occasions,drop=FALSE],1,sum)
+  if(is.null(usage(dets))) {effort = rep(1,ntraps)}else 
+  {effort = apply(usage(dets)[,occasions,drop=FALSE],1,sum)}
+  if(any(effort==0)) { # remove data from zero effort traps
+    capthist = subset(capthist,subset=which(effort>0),occasions=occasions)
+    dets = traps(capthist)
+    ntraps = dim(dets)[1]
+    effort = effort[effort>0]
+  }
+  ntraps = dim(dets)[1]
   ndets = matrix(rep(0,noccasions*ntraps),nrow=noccasions)
   for(i in 1:noccasions) ndets[i,] = apply(capthist[,occasions[i],,drop=FALSE],3,"sum")
   ndets = apply(ndets,2,sum)
@@ -651,7 +677,6 @@ plotER3d = function(capthist, mask=NULL, occasions=1, add.points=TRUE,
   if(add.traps) points3d(dets$x,dets$y,z=0,pch=1,col="red")
   
 }
-
 
 
 #' @title Plot top proportion of density

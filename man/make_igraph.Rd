@@ -4,8 +4,15 @@
 \alias{make_igraph}
 \title{Creates the igraph of a mask object}
 \usage{
-make_igraph(mask, cname, cfun = "mean", directions = 8,
-  directed = FALSE, symm = TRUE, conductance = FALSE)
+make_igraph(
+  mask,
+  cname,
+  cfun = "mean",
+  directions = 8,
+  directed = FALSE,
+  symm = TRUE,
+  conductance = FALSE
+)
 }
 \arguments{
 \item{mask}{\code{secr} mask object. Must have covariate called 'noneuc' containing cost}

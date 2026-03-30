@@ -4,8 +4,15 @@
 \alias{add_lcpath}
 \title{Add leas cost path to plot}
 \usage{
-add_lcpath(mask, cname, cfun = "mean", directed = FALSE, symm = TRUE,
-  conductance = FALSE, ...)
+add_lcpath(
+  mask,
+  cname,
+  cfun = "mean",
+  directed = FALSE,
+  symm = TRUE,
+  conductance = FALSE,
+  ...
+)
 }
 \arguments{
 \item{mask}{\code{secr} mask object. Must have covariate called 'noneuc' containing cost}

@@ -2,14 +2,21 @@
 % Please edit documentation in R/utilities.r
 \name{plam}
 \alias{plam}
-\title{Calculate detection function or encounter rate parameters}
+\title{Calculate detection or encounter function parameters}
 \usage{
-plam(detectfn, pars, dists, pars.vcv = NULL, details = NULL,
-  rgr = FALSE, hazard = FALSE)
+plam(
+  detectfn,
+  pars,
+  dists,
+  pars.vcv = NULL,
+  details = NULL,
+  rgr = FALSE,
+  hazard = FALSE
+)
 }
 \arguments{
 \item{detectfn}{integer code or character string for shape of detection 
-function 0 = halfnormal etc. – see \link{secr::detectfn}.}
+function: 0 for halfnormal etc. (see \link{secr::detectfn}).}
 
 \item{pars}{list, vector or matrix of parameter values.}
 
@@ -17,13 +24,16 @@ function 0 = halfnormal etc. – see \link{secr::detectfn}.}
 
 \item{pars.vcv}{variance-covariance matrix of pars}
 
-\item{details}{list of ancillary parameters - see \link{secr::detectfn} for 
-details}
+\item{details}{list of ancillary parameters (see \link{secr::detectfn})}
 
 \item{rgr}{logical; if TRUE a scaled curve r.g(r) is plotted instead of g(r)}
 
 \item{hazard}{logical; if TRUE the hazard of detection (the expected encounter
 function) is plotted instead of the probability.}
+
+\item{from}{A data frame or matrix with two columns, being the x- and y-coordinates of a set of points}
+
+\item{to}{A data frame or matrix with two columns, being the x- and y-coordinates of a set of points}
 }
 \description{
 Calculates detection function or expected encounter rate at a range of

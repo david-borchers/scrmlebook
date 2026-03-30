@@ -4,9 +4,17 @@
 \alias{Calc.pos.Haz}
 \title{Calcluates the position in the beta vector for all parameters.}
 \usage{
-Calc.pos.Haz(D.mod_ = c(1), D.type_ = c("Cons"), lambda0.mod_ = c(1),
-  b.effect_ = c("n"), sigma.mod_ = c(1), haz.type_ = "Dep",
-  haz.mod_ = c(1), haz.k_ = c(4), conduct.mod_ = NULL)
+Calc.pos.Haz(
+  D.mod_ = c(1),
+  D.type_ = c("Cons"),
+  lambda0.mod_ = c(1),
+  b.effect_ = c("n"),
+  sigma.mod_ = c(1),
+  haz.type_ = "Dep",
+  haz.mod_ = c(1),
+  haz.k_ = c(4),
+  conduct.mod_ = NULL
+)
 }
 \arguments{
 \item{D.mod_}{A numeric vector that specifies what density parameters are required for the different sessions. A different 

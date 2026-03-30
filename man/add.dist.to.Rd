@@ -4,8 +4,7 @@
 \alias{add.dist.to}
 \title{add new covariate consisting of distances to points that have covariate==distance.to}
 \usage{
-add.dist.to(mask, covariate, distance.to, dname = NULL,
-  overwrite = FALSE)
+add.dist.to(mask, covariate, distance.to, dname = NULL, overwrite = FALSE)
 }
 \arguments{
 \item{mask}{is object of class "mask".}

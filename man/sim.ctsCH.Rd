@@ -4,11 +4,24 @@
 \alias{sim.ctsCH}
 \title{Simulate CT data.}
 \usage{
-sim.ctsCH(traps.obj_, mask.obj_ = NULL, buffer_ = NULL,
-  haz.type_ = "IndL", detector.type_ = "Prox", gam.obj_ = NULL,
-  fit.obj_ = NULL, cycle.hrs_ = c(0, 24), mesh.size_ = 1000,
-  dens.surf_, g0_ = NULL, lambda0_ = NULL, sigma_ = NULL, endpoint_,
-  setup.hour_ = 0, occ.interval_ = 24)
+sim.ctsCH(
+  traps.obj_,
+  mask.obj_ = NULL,
+  buffer_ = NULL,
+  haz.type_ = "IndL",
+  detector.type_ = "Prox",
+  gam.obj_ = NULL,
+  fit.obj_ = NULL,
+  cycle.hrs_ = c(0, 24),
+  mesh.size_ = 1000,
+  dens.surf_,
+  g0_ = NULL,
+  lambda0_ = NULL,
+  sigma_ = NULL,
+  endpoint_,
+  setup.hour_ = 0,
+  occ.interval_ = 24
+)
 }
 \arguments{
 \item{traps.obj_}{An secr traps object.}

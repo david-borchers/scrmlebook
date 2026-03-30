@@ -28,9 +28,9 @@ Returns a list with values
 }
 }
 \description{
-Computes delta method variance-covariance matrix of results of any generic 
- function fct that computes a vector of estimates as a function of a set of 
- estimated parameters par.
+Computes delta method (first order Taylor series) variance-covariance matrix of 
+ results of any generic function fct that computes a vector of estimates as a 
+ function of a set of estimated parameters par.
 }
 \details{
 This function is copied vebatim from package \link{mrds}.

@@ -4,9 +4,17 @@
 \alias{study.haz.vec}
 \title{Construct the hazard vector for the full study.}
 \usage{
-study.haz.vec(cycle.vec_, y.vec.full_, spline.coeff_ = NULL,
-  release.hour_, endpoint_, n.haz.cycles_, haz.interval_, gam.obj_,
-  fit.obj_ = NULL)
+study.haz.vec(
+  cycle.vec_,
+  y.vec.full_,
+  spline.coeff_ = NULL,
+  release.hour_,
+  endpoint_,
+  n.haz.cycles_,
+  haz.interval_,
+  gam.obj_,
+  fit.obj_ = NULL
+)
 }
 \arguments{
 \item{cycle.vec_}{A vector of times that correspond to a single hazard cycle.}

@@ -4,29 +4,11 @@
 \alias{plot.p..}
 \title{Plots overall detection probability surface p..(s) on mesh}
 \usage{
-\method{plot}{p..}(capthist, mesh, pars, dist = NULL, contour = TRUE,
-  key = TRUE, ...)
+\method{plot}{p..}(capthist, mesh, pars, dist = NULL, contour = TRUE, key = TRUE, ...)
 
-\method{plot}{p..}(capthist, mesh, pars, dist = NULL, contour = TRUE,
-  key = TRUE, ...)
+\method{plot}{p..}(capthist, mesh, pars, dist = NULL, contour = TRUE, key = TRUE, ...)
 }
 \arguments{
-\item{capthist}{Object of class  '\code{capthist}' from package \code{secr}. Currently only 
-multi-catch traps and count detectors with a single session implemented.}
-
-\item{mesh}{Object of class  '\code{capthist}' from package \code{secr}.}
-
-\item{pars}{Vector of parameters, in the format required by function \code{scr.negloglik}.}
-
-\item{dist}{K by M Matrix distances from each of the K detectors to each of the M points on 
-the mesh.}
-
-\item{contour}{TRUE if you want a contour plotted on top of the image plot.}
-
-\item{key}{TRUE if you want a key (legend) added showing probability levels.}
-
-\item{...}{Other arguments for \code{plotcovariate}.}
-
 \item{capthist}{Object of class  '\code{capthist}' from package \code{secr}. Currently only 
 multi-catch traps and count detectors with a single session implemented.}
 

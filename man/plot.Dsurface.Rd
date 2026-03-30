@@ -4,8 +4,14 @@
 \alias{plot.Dsurface}
 \title{Plots image (and optionally contours) of density from Dsurface object}
 \usage{
-\method{plot}{Dsurface}(Dsurface, covariate = "D.0", scale = 1,
-  contour = TRUE, addpoly = TRUE, ...)
+\method{plot}{Dsurface}(
+  Dsurface,
+  covariate = "D.0",
+  scale = 1,
+  contour = TRUE,
+  addpoly = TRUE,
+  ...
+)
 }
 \arguments{
 \item{Dsurface}{is an object of class `Dsurface'}

@@ -4,11 +4,24 @@
 \alias{LL.survival.ind}
 \title{Calcluates the exposure to capture for individuals.}
 \usage{
-LL.survival.ind(haz.type_, trap.obj_, first.cap_,
-  usage.intervals_ = NULL, lambda.d_ = NULL, lambda.b.d_ = NULL,
-  lambda0_ = NULL, lambda0.b_ = NULL, const.haz_ = F,
-  dists_ = NULL, gam.obj_ = NULL, spline.coeff_ = NULL, study.time_,
-  setup.hour_ = 0, endpoint_, mask.pts_)
+LL.survival.ind(
+  haz.type_,
+  trap.obj_,
+  first.cap_,
+  usage.intervals_ = NULL,
+  lambda.d_ = NULL,
+  lambda.b.d_ = NULL,
+  lambda0_ = NULL,
+  lambda0.b_ = NULL,
+  const.haz_ = F,
+  dists_ = NULL,
+  gam.obj_ = NULL,
+  spline.coeff_ = NULL,
+  study.time_,
+  setup.hour_ = 0,
+  endpoint_,
+  mask.pts_
+)
 }
 \arguments{
 \item{haz.type_}{The type of detection hazard to use in the model. Choices c("IndL", "IndU", "Dep") include the two 

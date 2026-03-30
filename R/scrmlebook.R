@@ -21,7 +21,7 @@
 #' @import Matrix
 #' 
 #' @references
-#' Borchers, D. L., Stevenskon, B. C., Howe, E. J., and Distiller, G. Spatial Capture-Recapture by Maximum Likelihood, with R
+#' Borchers, D. L., Stevenson, B. C., Howe, E. J., and Distiller, G. Spatial Capture-Recapture by Maximum Likelihood, with R
 #'
 #' @keywords
 #' Spatial capture-recapture

@@ -4,14 +4,35 @@
 \alias{hazard.plot}
 \title{Plot cyclical detection hazard.}
 \usage{
-hazard.plot(cycle.hours_ = c(0, 24), time.vec_ = NULL,
-  dist.vec_ = 0:1000, mesh.size_ = 100, det.pars_, spline.pars_,
-  vcov_ = NULL, ci.method_ = "delta", haz.k_ = c(4),
-  haz.type_ = "IndU", dim_ = "time", full.ER_ = T, add_ = F,
-  dist_ = NULL, time_ = NULL, main_ = "", xlabel_ = "Cycle Hour",
-  ylabel_ = "Encounter Rate", ylim_ = NULL, cex.legend_ = 1,
-  legend.show_ = T, legend.pos_ = "topright", col_ = "black",
-  theta_ = 30, phi_ = 15, rotate_ = F, ydecimals_ = 3)
+hazard.plot(
+  cycle.hours_ = c(0, 24),
+  time.vec_ = NULL,
+  dist.vec_ = 0:1000,
+  mesh.size_ = 100,
+  det.pars_,
+  spline.pars_,
+  vcov_ = NULL,
+  ci.method_ = "delta",
+  haz.k_ = c(4),
+  haz.type_ = "IndU",
+  dim_ = "time",
+  full.ER_ = T,
+  add_ = F,
+  dist_ = NULL,
+  time_ = NULL,
+  main_ = "",
+  xlabel_ = "Cycle Hour",
+  ylabel_ = "Encounter Rate",
+  ylim_ = NULL,
+  cex.legend_ = 1,
+  legend.show_ = T,
+  legend.pos_ = "topright",
+  col_ = "black",
+  theta_ = 30,
+  phi_ = 15,
+  rotate_ = F,
+  ydecimals_ = 3
+)
 }
 \arguments{
 \item{cycle.hours_}{Specifies the vector of times for one cycle of the cyclical hazard.}

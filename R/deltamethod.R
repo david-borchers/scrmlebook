@@ -1,9 +1,9 @@
 #' @title Numeric Delta Method approximation for the variance-covariance matrix
 #'
 #' @description
-#'  Computes delta method variance-covariance matrix of results of any generic 
-#'  function fct that computes a vector of estimates as a function of a set of 
-#'  estimated parameters par.
+#'  Computes delta method (first order Taylor series) variance-covariance matrix of 
+#'  results of any generic function fct that computes a vector of estimates as a 
+#'  function of a set of estimated parameters par.
 #'  
 #' @details 
 #' This function is copied vebatim from package \link{mrds}.
@@ -66,3 +66,57 @@ DeltaMethod = function (par, fct, vcov, delta=0.01, ...) {
   variance <- t(partial) %*% vcov %*% partial
   return(list(variance = variance, partial = partial))
 }
+
+
+#' @title Delta Method approximation for g(0) from model with lambda0
+#'
+#' @description
+#'  Computes delta method  (first-order Taylor series approximation) for 
+#'  g0 parameter and its variance from a model parameterised in terms of lambda0.
+#' 
+#' @param fit An object of class \code{secr}.
+#' 
+#' @return Returns a list with values
+#' \itemize{
+#'  \item{g0}{ Estimated g0 parameter.}
+#'  \item{se.g0}{ Std error of g0 estimate.}
+#' }
+#' 
+#' @export 
+#' 
+ermodel.g0 = function(model) {
+  if(!is.element("lambda0",rownames(coefficients(model)))) stop("No lambda0 parameter in this model.")
+  l0.beta = coefficients(model)["lambda0","beta"]
+  var.l0.beta = coefficients(model)["lambda0","SE.beta"]^2
+  l0.beta2g0 = function(l0.beta) return(1-exp(-exp(l0.beta)))
+  g0 = l0.beta2g0(l0.beta)
+  se.g0 = sqrt(DeltaMethod(l0.beta, l0.beta2g0, var.l0.beta)$variance)
+  return(list(g0=as.numeric(g0), se.g0=as.numeric(se.g0)))
+}
+
+#' @title Delta Method approximation for lambda0 from model with g0
+#'
+#' @description
+#'  Computes delta method  (first-order Taylor series approximation) for 
+#'  lambda0 parameter and its variance from a model parameterised in terms of g0.
+#' 
+#' @param fit An object of class \code{secr}.
+#' 
+#' @return Returns a list with values
+#' \itemize{
+#'  \item{lambda0}{ Estimated lambda0 parameter.}
+#'  \item{lambda0}{ Std error of lambda0 estimate.}
+#' }
+#' 
+#' @export 
+#' 
+g0model.lambda0 = function(model) {
+  if(!is.element("g0",rownames(coefficients(model)))) stop("No g0 parameter in this model.")
+  g0.beta = coefficients(model)["g0","beta"]
+  var.g0.beta = coefficients(model)["g0","SE.beta"]^2
+  g0.beta2l0 = function(g0.beta) return(-log(1-plogis(g0.beta)))
+  lambda0 = g0.beta2l0(g0.beta)
+  se.lambda0 = sqrt(DeltaMethod(g0.beta, g0.beta2l0, var.g0.beta)$variance)
+  return(list(lambda0=as.numeric(lambda0), se.lambda0=as.numeric(se.lambda0)))
+}
+

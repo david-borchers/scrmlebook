@@ -4,8 +4,13 @@
 \alias{sim.time.gam}
 \title{Simulate capture time.}
 \usage{
-sim.time.gam(CDF.tot_, study.vec_, occ.interval_ = 24,
-  haz.interval_ = 24, release.hour_ = 0)
+sim.time.gam(
+  CDF.tot_,
+  study.vec_,
+  occ.interval_ = 24,
+  haz.interval_ = 24,
+  release.hour_ = 0
+)
 }
 \arguments{
 \item{CDF.tot_}{The CDF that is used to simulate capture times via the probability integral transform approach.}
